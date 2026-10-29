@@ -1,0 +1,263 @@
+/* ===== Para mi ingeniera — estilos completos (base + rediseño) ===== */
+
+:root {
+    --vino: #7f1832;
+    --vino-claro: #941e3a;
+    --rosa: #c33a59;
+    --rosa-suave: #ed8297;
+    --crema: #fff8f4;
+    --papel: #fffdf6;
+    --tinta: #542331;
+    --texto: #5e3d43;
+    --suave: #865565;
+    --borde: #f0c7d0;
+    --dorado: #c78c50;
+    --serif: "Cormorant Garamond", Georgia, serif;
+    --sans: "Poppins", system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: var(--sans);
+    color: var(--tinta);
+    background:
+        radial-gradient(ellipse at 50% 0%, #ffe0e8 0%, transparent 55%),
+        linear-gradient(145deg, #fff8f4, #fbe3e8 55%, #f7d5dc);
+    background-attachment: fixed;
+}
+
+:focus-visible { outline: 3px solid var(--dorado); outline-offset: 3px; }
+
+/* ----- Fondo animado ----- */
+.fondo { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+
+.corazon-flotante, .particula {
+    position: absolute; bottom: -40px;
+    color: var(--rosa); opacity: 0;
+    animation: subir linear forwards;
+}
+.particula { color: var(--dorado); }
+
+.petalo {
+    position: absolute; bottom: -30px;
+    width: 12px; height: 16px;
+    background: var(--rosa-suave);
+    border-radius: 80% 0 80% 0;
+    opacity: 0;
+    animation: subir linear forwards;
+}
+
+@keyframes subir {
+    0%   { transform: translateY(0) rotate(0); opacity: 0; }
+    10%  { opacity: .7; }
+    90%  { opacity: .5; }
+    100% { transform: translateY(-110vh) rotate(260deg); opacity: 0; }
+}
+
+/* ----- Estructura ----- */
+.contenedor {
+    position: relative; z-index: 1;
+    max-width: 760px; margin: 0 auto;
+    padding: 80px 20px 35px;
+    text-align: center;
+}
+
+.encabezado { padding: 20px 0 10px; }
+
+.etiqueta {
+    display: inline-block;
+    font-size: .85rem; letter-spacing: .5px;
+    color: #a33a53;
+}
+
+.titulo-principal {
+    margin: 10px 0 14px;
+    font-family: var(--serif); font-weight: 600;
+    font-size: clamp(2.8rem, 8vw, 5rem); line-height: 1.05;
+    color: var(--vino-claro);
+}
+
+.subtitulo, .nota, .secretos-intro, .texto-pregunta {
+    max-width: 440px; margin: 0 auto 14px;
+    color: var(--suave); line-height: 1.9;
+}
+.nota { font-size: .85rem; }
+
+/* ----- Sobre ----- */
+.seccion-sobre {
+    min-height: 60vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 14px;
+}
+
+.sobre {
+    position: relative;
+    width: min(340px, 82vw); height: 215px;
+    margin: 20px auto 10px;
+    perspective: 900px;
+    cursor: pointer;
+    filter: drop-shadow(0 24px 30px rgba(120, 22, 48, .24));
+}
+
+.sobre-base, .sobre-lados, .solapa { position: absolute; inset: 0; border-radius: 5px; }
+.sobre-base  { background: linear-gradient(145deg, #d95370, #a91f42); }
+.sobre-lados {
+    background: linear-gradient(145deg, #e0647f, #b8294b);
+    clip-path: polygon(0 0, 50% 56%, 100% 0, 100% 100%, 0 100%);
+}
+.solapa {
+    inset: 0 0 auto 0; height: 58%;
+    background: linear-gradient(160deg, var(--rosa-suave), #c73a5c);
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    transform-origin: top center;
+    transition: transform .7s ease;
+    z-index: 3;
+}
+.sello {
+    position: absolute; top: 57%; left: 50%;
+    width: 54px; height: 54px;
+    display: grid; place-items: center;
+    transform: translate(-50%, -50%);
+    border: 3px solid #f9dca7; border-radius: 50%;
+    background: #9e203c; color: #fff8f0; font-size: 1.4rem;
+    box-shadow: 0 5px 16px rgba(80, 0, 20, .25);
+    z-index: 4;
+    transition: opacity .3s ease;
+}
+.sobre-texto {
+    position: absolute; left: 0; right: 0; bottom: 16px;
+    font-family: var(--serif); font-style: italic; font-size: 1.15rem;
+    color: #ffe9ee; z-index: 2;
+}
+.sobre.abierto .solapa { transform: rotateX(180deg); z-index: 1; }
+.sobre.abierto .sello { opacity: 0; }
+
+/* ----- Botones ----- */
+.boton {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 50px; padding: 14px 28px;
+    border: 0; border-radius: 30px;
+    font: 500 .95rem var(--sans);
+    text-decoration: none; cursor: pointer;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+.boton:hover:not(:disabled) { transform: translateY(-2px); }
+.boton:disabled { opacity: .5; cursor: not-allowed; }
+
+.boton-principal {
+    min-width: 220px; color: #fff;
+    background: linear-gradient(135deg, #c33a59, #7f1832);
+    box-shadow: 0 9px 25px rgba(127, 24, 50, .2);
+}
+.boton-secundario {
+    border: 1px solid #e8c1cb; color: #8c2944; background: #fffaf8;
+}
+
+.control-musica {
+    position: fixed; top: 14px; right: 14px; z-index: 10;
+    display: flex; gap: 8px; align-items: center;
+    padding: 9px 16px;
+    border: 1px solid var(--borde); border-radius: 30px;
+    background: rgba(255, 250, 248, .94); color: #8e203d;
+    font: 500 .85rem var(--sans); cursor: pointer;
+}
+
+/* ----- Secciones con aparición al revelarse ----- */
+.carta, .secretos, .pregunta { animation: aparecer .6s ease both; }
+@keyframes aparecer { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+/* ----- Carta ----- */
+.carta {
+    max-width: 700px; margin: 25px auto; scroll-margin-top: 20px;
+    padding: clamp(28px, 6vw, 64px);
+    border: 1px solid #ead4b8; border-radius: 4px 4px 15px 15px;
+    background: linear-gradient(rgba(255, 253, 246, .97), rgba(255, 248, 235, .98));
+    box-shadow: 0 22px 60px rgba(92, 35, 47, .14);
+    text-align: left;
+}
+.adorno { text-align: center; font-size: 1.4rem; color: #b43c56; }
+.titulo-carta {
+    margin: 10px 0 24px; text-align: center;
+    font: 600 clamp(2.2rem, 5vw, 3.3rem) var(--serif); color: var(--vino-claro);
+}
+.carta p { margin: 0 0 1.1em; font: 400 1.28rem/1.95 var(--serif); color: var(--texto); }
+.carta .saludo { font-style: italic; font-size: 1.45rem; }
+.carta .firma { margin-top: 1.6em; text-align: right; font-style: italic; color: var(--vino); }
+.separador { display: flex; justify-content: center; gap: 14px; margin: 26px 0; color: #b43c56; }
+.carta .boton { display: flex; margin: 0 auto; }
+
+/* ----- Secretos ----- */
+.secretos { max-width: 750px; margin: 0 auto; padding: 30px 12px; scroll-margin-top: 20px; }
+.titulo-seccion {
+    margin: 0 0 10px;
+    font: 600 clamp(2rem, 5vw, 3rem) var(--serif); color: var(--vino-claro);
+}
+.corazones { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin: 24px 0; }
+.corazon-secreto {
+    width: 105px; height: 105px;
+    border: 1px solid var(--borde); border-radius: 50%;
+    background: rgba(255, 255, 255, .85);
+    color: var(--rosa); font-size: 2.2rem; cursor: pointer;
+    box-shadow: 0 8px 22px rgba(119, 35, 57, .09);
+    transition: transform .2s ease, background .3s ease, color .3s ease;
+}
+.corazon-secreto:hover { transform: scale(1.06); border-color: var(--dorado); }
+.corazon-secreto.descubierto { background: linear-gradient(135deg, #c33a59, #861b36); color: #fff; }
+
+.mensaje-secreto {
+    min-height: 90px; margin: 0 auto 14px; max-width: 560px; padding: 20px;
+    display: grid; place-items: center;
+    border: 1px solid #efd3b6; border-radius: 16px;
+    background: rgba(255, 253, 247, .95);
+    font: italic 400 clamp(1.3rem, 4vw, 1.8rem)/1.5 var(--serif); color: var(--texto);
+}
+
+/* ----- Pregunta final ----- */
+.pregunta {
+    max-width: 750px; min-height: 78vh; margin: 0 auto; padding: 45px 18px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    scroll-margin-top: 20px;
+}
+.rosa-grande { font-size: 3.5rem; }
+.titulo-pregunta {
+    max-width: 650px; margin: 12px 0 18px;
+    font: 600 clamp(2.6rem, 7vw, 4.6rem)/1.1 var(--serif);
+    color: var(--vino-claro); text-wrap: balance;
+}
+.botones-respuesta { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin: 20px 0; }
+
+.respuesta-final {
+    max-width: 520px; margin: 10px auto 18px; padding: 24px;
+    border: 1px solid #efd6bb; border-radius: 16px; background: #fffaf4;
+}
+.respuesta-final h3 { margin: 0 0 10px; font: 600 1.9rem var(--serif); color: var(--vino-claro); }
+.respuesta-final p { margin: 0 0 10px; line-height: 1.8; color: var(--texto); }
+.respuesta-final .boton { margin-top: 8px; }
+
+/* ----- Pie ----- */
+.pie { margin-top: 40px; font-size: .85rem; color: #936674; }
+.pie p { margin: 4px 0; }
+
+/* ----- Móvil ----- */
+@media (max-width: 600px) {
+    .contenedor { padding: 75px 16px 25px; }
+    .sobre { height: 190px; }
+    .carta { padding: 28px 22px; }
+    .carta p { font-size: 1.16rem; }
+    .corazon-secreto { width: 88px; height: 88px; }
+}
+
+/* ----- Movimiento reducido ----- */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

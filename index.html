@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#71152f">
+    <title>Una sorpresa para ti ❤️</title>
+    <meta name="description" content="Hice algo pensando en ti.">
+    <meta name="robots" content="noindex, nofollow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Una sorpresa para ti ❤️">
+    <meta property="og:description" content="Hice algo pensando en ti.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="estilos.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <div id="fondo" class="fondo" aria-hidden="true"></div>
+
+    <audio id="musica" preload="auto" loop>
+        <source src="audio/cancion.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="controlMusica" class="control-musica" type="button" hidden>
+        <span id="iconoMusica" aria-hidden="true">▶</span>
+        <span id="textoMusica">Reproducir música</span>
+    </button>
+
+    <main class="contenedor">
+
+        <header id="encabezado" class="encabezado">
+            <span class="etiqueta">Una sorpresa hecha con amor</span>
+            <h1 class="titulo-principal">Para mi<br>ingeniera <span aria-hidden="true">❤️</span></h1>
+            <p class="subtitulo">
+                Hay cosas que se dicen mejor con calma. Por eso preparé
+                algo para ti, hecho con cuidado y con ganas de que te saque
+                una sonrisa.
+            </p>
+        </header>
+
+        <section id="seccionSobre" class="seccion-sobre" aria-label="Sobre romántico">
+            <div class="zona-sobre">
+                <div id="sobre" class="sobre" role="button" tabindex="0" aria-label="Abrir la carta">
+                    <div class="sobre-base"></div>
+                    <div class="sobre-lados"></div>
+                    <div class="solapa"></div>
+                    <div class="sello" aria-hidden="true">♥</div>
+                    <div class="sobre-texto">Para mi ingeniera</div>
+                </div>
+            </div>
+
+            <button id="abrirSobre" class="boton boton-principal" type="button">Abrir mi carta ❤️</button>
+            <p class="nota">Preparé estas palabras pensando especialmente en ti.</p>
+            <p id="estadoMusica" class="nota" aria-live="polite"></p>
+        </section>
+
+        <article id="carta" class="carta" hidden>
+            <div class="adorno" aria-hidden="true">🌹 ♥ 🌹</div>
+            <h2 class="titulo-carta">Unas palabras para ti</h2>
+            <p class="saludo">Mi ingeniera hermosa:</p>
+
+            <p>La verdad no soy muy bueno para estas cosas, y me tomó varios intentos escribir esto. Pero prefiero decírtelo así que quedarme con las ganas.</p>
+            <p>Hace un tiempo pienso en ti más de lo que esperaba. Me gusta cómo eres, cómo te tomas en serio lo que quieres lograr y las ganas que le pones a todo. Y me di cuenta de que ya no quería hacer como si fueras una persona más en mi día.</p>
+            <p>Admiro mucho lo que estudias y lo que vas construyendo. Tú te dedicas a que las cosas funcionen mejor, a encontrar dónde se pierde tiempo, a mejorar procesos y a pensar cómo hacer que todo fluya. Y eso se nota también en cómo eres: siempre buscando la forma de hacerlo bien. Tus proyectos y tus sueños me importan, y me encantaría verte llegar lejos.</p>
+            <p>No te voy a prometer que todo va a ser perfecto, porque no lo es. Un proceso perfecto no existe, siempre hay algo por mejorar. Lo que sí te prometo es ser sincero contigo, escucharte cuando lo necesites y alegrarme de verdad por tus logros.</p>
+            <p>Hice esta página porque quería que supieras que lo pensé con calma, y porque quería sacarte una sonrisa, aunque fuera pequeña.</p>
+            <p>No tienes que responderme ya. Solo quería que supieras lo que siento.</p>
+
+            <p class="firma">Con todo mi cariño,<br>alguien que quiere algo bonito contigo ❤️</p>
+
+            <div class="separador" aria-hidden="true"><span>♡</span><span>🌹</span><span>♡</span></div>
+
+            <button id="mostrarSecretos" class="boton boton-principal" type="button">Tengo más cosas que decirte 💌</button>
+        </article>
+
+        <section id="secretos" class="secretos" hidden>
+            <h2 class="titulo-seccion">Pequeños secretos para ti</h2>
+            <p class="secretos-intro">Cada corazón guarda algo que quiero decirte. Toca cada uno para descubrirlos. ❤️</p>
+
+            <div class="corazones">
+                <button class="corazon-secreto" type="button" data-mensaje="Me alegra el día cuando hablamos, aunque sea un ratico." aria-label="Descubrir mensaje 1">♥</button>
+                <button class="corazon-secreto" type="button" data-mensaje="Admiro las ganas con las que persigues tus metas. Tus proyectos me importan." aria-label="Descubrir mensaje 2">♥</button>
+                <button class="corazon-secreto" type="button" data-mensaje="No tienes que ser perfecta. Así como eres me gustas, y los procesos perfectos solo existen en los libros." aria-label="Descubrir mensaje 3">♥</button>
+                <button class="corazon-secreto" type="button" data-mensaje="Me gustaría que nos conociéramos mejor, sin afán y con mejora continua." aria-label="Descubrir mensaje 4">♥</button>
+                <button class="corazon-secreto" type="button" data-mensaje="Y bueno... falta una última cosa que quería preguntarte." aria-label="Descubrir mensaje 5">♥</button>
+            </div>
+
+            <div id="mensajeSecreto" class="mensaje-secreto" aria-live="polite">Elige un corazón para descubrir un secreto. 💗</div>
+            <p id="progresoSecretos" class="nota">Has descubierto 0 de 5 mensajes ❤️</p>
+
+            <button id="continuar" class="boton boton-principal" type="button" disabled>Descubrir la última sorpresa 💌</button>
+        </section>
+
+        <section id="pregunta" class="pregunta" hidden>
+            <div class="rosa-grande" aria-hidden="true">🌹</div>
+            <span class="etiqueta">Una pregunta desde el corazón</span>
+
+            <h2 class="titulo-pregunta">Mi ingeniera,<br>¿quieres ser mi novia?</h2>
+
+            <p class="texto-pregunta">Me gustaría que lo intentáramos, con calma y sin presiones. Quiero apoyar tus sueños y que construyamos algo bonito paso a paso.</p>
+            <p class="texto-pregunta">Sea cual sea tu respuesta, quiero que sea sincera. ❤️</p>
+
+            <div class="botones-respuesta">
+                <button id="respuestaSi" class="boton boton-principal" type="button">Sí, quiero ❤️</button>
+            </div>
+
+            <div id="respuestaFinal" class="respuesta-final" aria-live="polite" hidden></div>
+
+            <button id="volverInicio" class="boton boton-secundario" type="button" hidden>Volver al inicio</button>
+        </section>
+
+        <footer class="pie">
+            <p>Hecha especialmente para ti, mi ingeniera. ❤️</p>
+            <p>Lo mejor siempre se puede mejorar, y yo quiero mejorar contigo.</p>
+        </footer>
+    </main>
+</body>
+</html>
